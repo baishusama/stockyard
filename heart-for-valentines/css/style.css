@@ -1,0 +1,155 @@
+@charset "UTF-8";
+html,
+body,
+ul {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+html li,
+body li,
+ul li {
+  list-style: none;
+}
+
+ul {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+ul li {
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  background-color: aliceblue;
+  /**
+         *  圆 x 2 + (大)半圆 x 1
+         */
+  /**
+         *  (小)半圆 x 2 + (大)半圆 x 1
+         */
+  /**
+         *  (小)水滴 x 2 + (大)三角 x 1
+         */
+}
+
+ul li div {
+  text-align: center;
+}
+
+ul li div .charactor {
+  color: #fff;
+  font-size: 50px;
+}
+
+ul li .heart-1 {
+  position: relative;
+  top: 50%;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  width: 200px;
+  height: 100px;
+  background-color: lightpink;
+}
+
+ul li .heart-1:before, ul li .heart-1:after {
+  position: absolute;
+  top: -50px;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+}
+
+ul li .heart-1:before {
+  left: 0;
+}
+
+ul li .heart-1:after {
+  right: 0;
+}
+
+ul li .heart-2 {
+  position: relative;
+  top: 50%;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  width: 200px;
+  height: 100px;
+  background-color: lightpink;
+}
+
+ul li .heart-2:before, ul li .heart-2:after {
+  position: absolute;
+  top: -50px;
+  display: block;
+  content: '\a0';
+  border-radius: 50% 50% 0 / 100% 100% 0 0;
+  width: 100px;
+  height: 50px;
+  background-color: lightpink;
+}
+
+ul li .heart-2:before {
+  left: 0;
+}
+
+ul li .heart-2:after {
+  right: 0;
+}
+
+ul li:nth-child(3) {
+  padding: 40px;
+}
+
+ul li .heart-3 {
+  position: relative;
+  border: 60.35px solid lightpink;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  width: 0;
+  height: 0;
+  transform: rotate(45deg);
+}
+
+ul li .heart-3 .charactor {
+  position: absolute;
+  top: -60.35px;
+  right: -60.35px;
+  bottom: -60.35px;
+  left: -60.35px;
+  display: inline-block;
+  line-height: 120.7px;
+  transform: rotate(-45deg);
+}
+
+ul li .heart-3:before, ul li .heart-3:after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+}
+
+ul li .heart-3:before {
+  border-top-right-radius: 0;
+  right: 10.35px;
+  bottom: -60.35px;
+  transform: rotate(45deg);
+}
+
+ul li .heart-3:after {
+  border-bottom-left-radius: 0;
+  bottom: 10.35px;
+  right: -60.35px;
+  transform: rotate(-45deg);
+}
