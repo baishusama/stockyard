@@ -1,156 +1,415 @@
-html,
 body,
+html,
 ul {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    li {
-      list-style: none;
-    }
-}
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 
+  li {
+    list-style: none;
+  }
+}
 // $hwidth:
 $theme-color: lightpink;
+$test-color: rgba(255, 0, 0, .4);
 $d: 100px;
 $r: $d / 2; // 50px;
 
 ul {
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
-    // align-items: space-between;
-    li {
-        box-sizing: border-box;
-        // display: inline-block;
-        width: 200px;
-        height: 200px;
-        background-color: aliceblue;
-        div {
-          text-align: center;
-          .charactor {
-            color: #fff;
-            font-size: 50px;
-          }
-        }
-        /**
-         *  圆 x 2 + (大)半圆 x 1
-         */
-        .heart-1 {
-            position: relative;
-            top: 50%;
-            border-radius: 0 0 50% 50% / 0 0 100% 100%;
-            width: 200px;
-            height: 100px;
-            background-color: $theme-color;
-            &:before,
-            &:after {
-              position: absolute;
-              top: -$r;
-              z-index: -1; // ??? 这里的层级关系有点晕。。
-              display: block;
-              content: '\a0';
-              border-radius: 50%; // 圆
-              width: $d;
-              height: $d; // 圆
-              background-color: $theme-color;
-            }
-            &:before {
-              left: 0;
-            }
-            &:after {
-              right: 0;
-            }
-        }
-        /**
-         *  (小)半圆 x 2 + (大)半圆 x 1
-         */
-        .heart-2 {
-            position: relative;
-            top: 50%;
-            border-radius: 0 0 50% 50% / 0 0 100% 100%;
-            width: 200px;
-            height: 100px;
-            background-color: $theme-color;
-            &:before,
-            &:after {
-              position: absolute;
-              top: -$r;
-              display: block;
-              content: '\a0';
-              border-radius: 50% 50% 0 / 100% 100% 0 0; // 半圆
-              width: $d;
-              height: $r; // 半圆
-              background-color: $theme-color;
-            }
-            &:before {
-              left: 0;
-            }
-            &:after {
-              right: 0;
-            }
-        }
-        &:nth-child(3) {
-          // position: relative;
-          padding: 40px;
-          // &:before { // 辅助线
-          //   position: absolute;
-          //   top: 50%;
-          //   display: block;
-          //   content: '\a0';
-          //   border-bottom: 1px dashed black;
-          //   width: 100%;
-          //   height: 0;
-          // }
-        }
-        /**
-         *  (小)水滴 x 2 + (大)三角 x 1
-         */
-        .heart-3 {
-            $rotateDeg: 45deg;
-            $halfH: 2.414 / 2 * 50px;
-            position: relative;
-            border: $halfH solid $theme-color;
-            border-top-color: transparent;
-            border-left-color: transparent;
-            width: 0;
-            height: 0;
-            transform: rotate($rotateDeg);
-            .charactor {
-              position: absolute;
-              top: -$halfH;
-              right:-$halfH;
-              bottom: -$halfH;
-              left: -$halfH;
-              display: inline-block;
-              line-height: $halfH * 2;
-              transform: rotate(-$rotateDeg);
-            }
-            &:before,
-            &:after {
-              position: absolute;
-              z-index: -1;
-              display: block;
-              content: '\a0';
-              border-radius: 50%;
-              width: $d;
-              height: $d;
-              background-color: $theme-color;
-            }
-            &:before {
-              border-top-right-radius: 0;
-              right: $halfH - $r;
-              bottom: -$halfH;
-              transform: rotate(45deg);
-            }
-            &:after {
-              border-bottom-left-radius: 0;
-              bottom: $halfH - $r;
-              right: -$halfH;
-              transform: rotate(-45deg);
-            }
-        }
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  // align-items: space-between;
+  li {
+    box-sizing: border-box;
+    // display: inline-block;
+    margin: 4px;
+    width: 200px;
+    height: 200px;
+    background-color: aliceblue;
+
+    .heart {
+      text-align: center;
+      filter: drop-shadow(0 0 4px rgba(0,0,0,.4));
+
+      .charactor {
+        color: #fff;
+        font-size: 50px;
+      }
     }
+    /**
+         *  关于“层叠上下文”，参考自张鑫旭大神的文章：
+         *  http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/
+         */
+    //==========
+    //  圆 x 2 + (大)半圆 x 1
+    //==========
+    &:nth-child(1) {
+      display: flex; // 层叠上下文@zxx
+    }
+
+    .heart-1 {
+      position: relative;
+      z-index: 0; // 层叠上下文@zxx
+      top: 75px;
+      border-radius: 0 0 50% 50% / 0 0 100% 100%;
+      width: 200px;
+      height: 100px;
+      background-color: $theme-color;
+      line-height: 50px;
+
+      &:after,
+      &:before {
+        position: absolute;
+        top: -$r;
+        z-index: -1; // 注意这里的层级关系！！
+        display: block;
+        content: '\a0';
+        border-radius: 50%; // 圆
+        width: $d;
+        height: $d; // 圆
+        background-color: $theme-color;
+      }
+
+      &:before {
+        left: 0;
+      }
+
+      &:after {
+        right: 0;
+      }
+    }
+    //==========
+    //  (小)半圆 x 2 + (大)半圆 x 1
+    //==========
+    .heart-2 {
+      position: relative;
+      top: 75px;
+      border-radius: 0 0 50% 50% / 0 0 100% 100%;
+      width: 200px;
+      height: 100px;
+      background-color: $theme-color;
+      line-height: 50px;
+
+      &:after,
+      &:before {
+        position: absolute;
+        top: -$r;
+        display: block;
+        content: '\a0';
+        border-radius: 50% 50% 0 / 100% 100% 0 0; // 半圆
+        width: $d;
+        height: $r; // 半圆
+        background-color: $theme-color;
+      }
+
+      &:before {
+        left: 0;
+      }
+
+      &:after {
+        right: 0;
+      }
+    }
+    //==========
+    //  椭圆 x 2
+    //==========
+    &:nth-child(3) {
+      display: flex; // 层叠上下文@zxx
+    }
+
+    .heart-3 {
+      position: relative;
+      z-index: 0;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+
+      &::after,
+      &::before {
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+        display: block;
+        content: '\a0';
+        border-radius: 50%;
+        width: 95px;
+        height: 190px;
+        background-color: $theme-color;
+      }
+      $distance: 18px;
+      $deg: 30deg;
+
+      &::before {
+        left: $distance;
+        transform: rotate(-$deg);
+      }
+
+      &::after {
+        right: $distance;
+        transform: rotate($deg);
+      }
+    }
+    //==========
+    //  （变形）椭圆 x 2
+    //==========
+    &:nth-child(4) {
+      display: flex; // 层叠上下文@zxx
+    }
+
+    .heart-4 {
+      position: relative;
+      z-index: 0;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+
+      &::after,
+      &::before {
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+        display: block;
+        content: '\a0';
+        border-radius: 50% / 35% 35% 65% 65%;
+        width: 100px;
+        height: 180px;
+        background-color: $theme-color;
+      }
+      $distance: 21px;
+      $deg: 25deg;
+
+      &::before {
+        left: $distance;
+        transform: rotate(-$deg);
+      }
+
+      &::after {
+        right: $distance;
+        transform: rotate($deg);
+      }
+    }
+    //==========
+    //  SVG - look in html
+    //==========
+    svg.heart-5 {
+      text {
+        // http://lea.verou.me/2013/03/easily-center-text-vertically-with-svg/
+        text-anchor: middle;
+      }
+    }
+    //==========
+    //  地鼠形 x 2
+    //==========
+    &:nth-child(6) {
+      display: flex;
+    }
+
+    .heart-6 {
+      position: relative;
+      top: 50px;
+      left: 50px;
+      z-index: 0;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      $x-offset: -18px;
+      $y-offset: $x-offset; // 这里刚好相等的时候，位置比较合适 :P
+
+      &::after,
+      &::before {
+        position: absolute;
+        bottom: $y-offset;
+        z-index: -1;
+        display: block;
+        content: '\a0';
+        border-radius: 50% / 50px 50px 0 0;
+        width: 100px;
+        height: 150px;
+        background-color: $theme-color;
+      }
+
+      &::before {
+        left: $x-offset;
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        right: $x-offset;
+        transform: rotate(45deg);
+      }
+    }
+    //==========
+    //  (小)水滴 x 2 + border 生成的(大)三角 x 1
+    //==========
+    &:nth-child(7) {
+      // position: relative;
+      padding: 40px;
+      // &:before { // 辅助线
+      //   position: absolute;
+      //   top: 50%;
+      //   display: block;
+      //   content: '\a0';
+      //   border-bottom: 1px dashed black;
+      //   width: 100%;
+      //   height: 0;
+      // }
+    }
+
+    .heart-7 {
+      $rotateDeg: 45deg;
+      $halfH: 2.414 / 2 * 50px;
+      position: relative;
+      border: $halfH solid $theme-color;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      width: 0;
+      height: 0;
+      transform: rotate($rotateDeg);
+
+      .charactor {
+        position: absolute;
+        top: -$halfH;
+        right: -$halfH;
+        bottom: -$halfH;
+        left: -$halfH;
+        display: inline-block;
+        line-height: $halfH * 2;
+        transform: rotate(-$rotateDeg);
+      }
+
+      &:after,
+      &:before {
+        position: absolute;
+        z-index: -1;
+        display: block;
+        content: '\a0';
+        border-radius: 50%;
+        width: $d;
+        height: $d;
+        background-color: $theme-color;
+      }
+
+      &:before {
+        border-top-right-radius: 0;
+        right: $halfH - $r;
+        bottom: -$halfH;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        border-bottom-left-radius: 0;
+        bottom: $halfH - $r;
+        right: -$halfH;
+        transform: rotate(-45deg);
+      }
+    }
+    //==========
+    //  (小)水滴 x 2 + border 生成的 1/4 扇形 x 1
+    //==========
+    &:nth-child(8) {
+      // position: relative;
+      padding: 40px;
+    }
+
+    .heart-8 {
+      $rotateDeg: 45deg;
+      $halfH: 2.414 / 2 * 50px;
+      $height: 2.414 * 50px;
+      position: relative;
+      width: $height;
+      height: $height;
+      background: radial-gradient(circle at bottom right, $theme-color $height, transparent 0) no-repeat;
+      transform: rotate($rotateDeg);
+
+      .charactor {
+        position: absolute;
+        top: 0; // -$halfH;
+        right: 0; // -$halfH;
+        bottom: 0; // -$halfH;
+        left: 0; // -$halfH;
+        display: inline-block;
+        line-height: $halfH * 2;
+        transform: rotate(-$rotateDeg);
+      }
+
+      &:after,
+      &:before {
+        position: absolute;
+        z-index: -1;
+        display: block;
+        content: '\a0';
+        border-radius: 50%;
+        width: $d;
+        height: $d;
+        background-color: $theme-color;
+      }
+
+      &:before {
+        border-top-right-radius: 0;
+        left: -$r;
+        bottom: 0;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        border-bottom-left-radius: 0;
+        top: - $r;
+        right: 0;
+        transform: rotate(-45deg);
+      }
+    }
+    //==========
+    //  (小)水滴 x 2 + radial-gradient 生成的两直角边内凹的三角形 x 1
+    //==========
+    &:nth-child(9) {
+      display: flex;
+    }
+
+    .heart-9 {
+      $rotateDeg: 45deg;
+      $height: 120px; // 2.414 * 50px; // 取整避免半像素
+      $halfH: 60px; // 2.414 / 2 * 50px; // 取整避免半像素
+      $ellipse-short: 10px;
+      position: relative;
+      top: (200px - ($height * 2 / 3))/2;
+      left: 100px - $height / 2;
+      z-index: 0;
+      width: $height;
+      height: $height;
+      background: radial-gradient(circle at bottom left, transparent $halfH, $theme-color 0) no-repeat bottom left, radial-gradient(circle at bottom right, transparent $halfH, $theme-color 0) no-repeat bottom right;
+      background-size: 50% 50%;
+
+      .charactor {
+        line-height: $height * 2 / 3;
+      }
+
+      &:after,
+      &:before {
+        position: absolute;
+        z-index: -1;
+        display: block;
+        content: '\a0';
+        border-radius: 50%;
+        width: $d;
+        height: $d;
+        background-color: $theme-color;
+      }
+
+      &:before {
+        border-bottom-right-radius: 0;
+        top: $halfH - $d;
+        left: $halfH - $d;
+      }
+
+      &:after {
+        border-bottom-left-radius: 0;
+        top: $halfH - $d;
+        right: $halfH - $d;
+      }
+    }
+  }
 }

@@ -1,14 +1,14 @@
 @charset "UTF-8";
-html,
 body,
+html,
 ul {
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
-html li,
 body li,
+html li,
 ul li {
   list-style: none;
 }
@@ -18,45 +18,48 @@ ul {
   display: -ms-flex;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-around;
+  justify-content: center;
+  align-content: center;
 }
 
 ul li {
   box-sizing: border-box;
+  margin: 4px;
   width: 200px;
   height: 200px;
   background-color: aliceblue;
   /**
-         *  圆 x 2 + (大)半圆 x 1
-         */
-  /**
-         *  (小)半圆 x 2 + (大)半圆 x 1
-         */
-  /**
-         *  (小)水滴 x 2 + (大)三角 x 1
+         *  关于“层叠上下文”，参考自张鑫旭大神的文章：
+         *  http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/
          */
 }
 
-ul li div {
+ul li .heart {
   text-align: center;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
 }
 
-ul li div .charactor {
+ul li .heart .charactor {
   color: #fff;
   font-size: 50px;
 }
 
+ul li:nth-child(1) {
+  display: flex;
+}
+
 ul li .heart-1 {
   position: relative;
-  top: 50%;
+  z-index: 0;
+  top: 75px;
   border-radius: 0 0 50% 50% / 0 0 100% 100%;
   width: 200px;
   height: 100px;
   background-color: lightpink;
+  line-height: 50px;
 }
 
-ul li .heart-1:before, ul li .heart-1:after {
+ul li .heart-1:after, ul li .heart-1:before {
   position: absolute;
   top: -50px;
   z-index: -1;
@@ -78,14 +81,15 @@ ul li .heart-1:after {
 
 ul li .heart-2 {
   position: relative;
-  top: 50%;
+  top: 75px;
   border-radius: 0 0 50% 50% / 0 0 100% 100%;
   width: 200px;
   height: 100px;
   background-color: lightpink;
+  line-height: 50px;
 }
 
-ul li .heart-2:before, ul li .heart-2:after {
+ul li .heart-2:after, ul li .heart-2:before {
   position: absolute;
   top: -50px;
   display: block;
@@ -105,10 +109,118 @@ ul li .heart-2:after {
 }
 
 ul li:nth-child(3) {
-  padding: 40px;
+  display: flex;
 }
 
 ul li .heart-3 {
+  position: relative;
+  z-index: 0;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+}
+
+ul li .heart-3::after, ul li .heart-3::before {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50%;
+  width: 95px;
+  height: 190px;
+  background-color: lightpink;
+}
+
+ul li .heart-3::before {
+  left: 18px;
+  transform: rotate(-30deg);
+}
+
+ul li .heart-3::after {
+  right: 18px;
+  transform: rotate(30deg);
+}
+
+ul li:nth-child(4) {
+  display: flex;
+}
+
+ul li .heart-4 {
+  position: relative;
+  z-index: 0;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+}
+
+ul li .heart-4::after, ul li .heart-4::before {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50% / 35% 35% 65% 65%;
+  width: 100px;
+  height: 180px;
+  background-color: lightpink;
+}
+
+ul li .heart-4::before {
+  left: 21px;
+  transform: rotate(-25deg);
+}
+
+ul li .heart-4::after {
+  right: 21px;
+  transform: rotate(25deg);
+}
+
+ul li svg.heart-5 text {
+  text-anchor: middle;
+}
+
+ul li:nth-child(6) {
+  display: flex;
+}
+
+ul li .heart-6 {
+  position: relative;
+  top: 50px;
+  left: 50px;
+  z-index: 0;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+}
+
+ul li .heart-6::after, ul li .heart-6::before {
+  position: absolute;
+  bottom: -18px;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50% / 50px 50px 0 0;
+  width: 100px;
+  height: 150px;
+  background-color: lightpink;
+}
+
+ul li .heart-6::before {
+  left: -18px;
+  transform: rotate(-45deg);
+}
+
+ul li .heart-6::after {
+  right: -18px;
+  transform: rotate(45deg);
+}
+
+ul li:nth-child(7) {
+  padding: 40px;
+}
+
+ul li .heart-7 {
   position: relative;
   border: 60.35px solid lightpink;
   border-top-color: transparent;
@@ -118,7 +230,7 @@ ul li .heart-3 {
   transform: rotate(45deg);
 }
 
-ul li .heart-3 .charactor {
+ul li .heart-7 .charactor {
   position: absolute;
   top: -60.35px;
   right: -60.35px;
@@ -129,7 +241,7 @@ ul li .heart-3 .charactor {
   transform: rotate(-45deg);
 }
 
-ul li .heart-3:before, ul li .heart-3:after {
+ul li .heart-7:after, ul li .heart-7:before {
   position: absolute;
   z-index: -1;
   display: block;
@@ -140,16 +252,106 @@ ul li .heart-3:before, ul li .heart-3:after {
   background-color: lightpink;
 }
 
-ul li .heart-3:before {
+ul li .heart-7:before {
   border-top-right-radius: 0;
   right: 10.35px;
   bottom: -60.35px;
   transform: rotate(45deg);
 }
 
-ul li .heart-3:after {
+ul li .heart-7:after {
   border-bottom-left-radius: 0;
   bottom: 10.35px;
   right: -60.35px;
   transform: rotate(-45deg);
+}
+
+ul li:nth-child(8) {
+  padding: 40px;
+}
+
+ul li .heart-8 {
+  position: relative;
+  width: 120.7px;
+  height: 120.7px;
+  background: radial-gradient(circle at bottom right, lightpink 120.7px, transparent 0) no-repeat;
+  transform: rotate(45deg);
+}
+
+ul li .heart-8 .charactor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  line-height: 120.7px;
+  transform: rotate(-45deg);
+}
+
+ul li .heart-8:after, ul li .heart-8:before {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+}
+
+ul li .heart-8:before {
+  border-top-right-radius: 0;
+  left: -50px;
+  bottom: 0;
+  transform: rotate(45deg);
+}
+
+ul li .heart-8:after {
+  border-bottom-left-radius: 0;
+  top: -50px;
+  right: 0;
+  transform: rotate(-45deg);
+}
+
+ul li:nth-child(9) {
+  display: flex;
+}
+
+ul li .heart-9 {
+  position: relative;
+  top: 60px;
+  left: 40px;
+  z-index: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at bottom left, transparent 60px, lightpink 0) no-repeat bottom left, radial-gradient(circle at bottom right, transparent 60px, lightpink 0) no-repeat bottom right;
+  background-size: 50% 50%;
+}
+
+ul li .heart-9 .charactor {
+  line-height: 80px;
+}
+
+ul li .heart-9:after, ul li .heart-9:before {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '\a0';
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+}
+
+ul li .heart-9:before {
+  border-bottom-right-radius: 0;
+  top: -40px;
+  left: -40px;
+}
+
+ul li .heart-9:after {
+  border-bottom-left-radius: 0;
+  top: -40px;
+  right: -40px;
 }
