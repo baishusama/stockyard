@@ -1,0 +1,28 @@
+// P.S. 在地址栏中使用时需要加上前缀 javascript:
+
+// 原生 JS
+
+// 先加载 FileSaver.min.js 再加载 generateAnkiCards.js
+// 其中，FileSaver.min.js 来自 https://github.com/eligrey/FileSaver.js/blob/master/FileSaver.min.js ；
+// 压缩前为 FileSaver.js 来自 https://github.com/eligrey/FileSaver.js/blob/master/FileSaver.js 。
+
+(function() { var fileSaverUrl = "http://localhost/anki/FileSaver.min.js"; var d = document.createElement("script"); d.src = fileSaverUrl; document.body.appendChild(d); var source = "http://localhost/anki/generateAnkiCards.js"; var s = document.createElement("script"); s.src = source; document.body.appendChild(s); })()
+
+// 将 FileSaver.min.js 和 generateAnkiCards.js 合并为一个文件，只加载一次
+
+(function() { var source = "http://localhost/anki/generateAnkiCards.js"; var s = document.createElement("script"); s.src = source; document.body.appendChild(s); })()
+
+// TRY .js file on GitHub
+// 使用形如 https://raw.githubusercontent.com/username/project/file 的 url 控制台会报错
+// 可以通过 GitHubPages 绕开报错
+
+(function() { var source = "https://baishusama.github.io/stockyard/anki/generateAnkiCards.js"; var s = document.createElement("script"); s.src = source; document.body.appendChild(s); })()
+
+// jQuery 方式
+
+(function(){
+    var source = "https://baishusama.github.io/stockyard/anki/generateAnkiCards.js";
+    var s = document.createElement("script");
+    s.innerHTML = "$.getScript('" + source + "', function(){console.log('Finished XD')});";
+    document.body.appendChild(s);
+})()
