@@ -150,8 +150,14 @@ console.log("backHTMLs: ", backHTMLs);
 function buildCSVContent(cards) {
     var buf = "";
     cards.map(function(card) {
+        // 在不影响 .csv 文件的前提下，保留 <pre> 内的缩进
+        if (card.backside.indexOf('<pre>') !== -1) {
+            card.backside = card.backside.replace(/<pre>(?:.|\r\n|\r|\n)*?(?=<\/pre>)/g, function(rep) {
+                return rep.replace(/(?:\r\n|\r|\n)/g, '&#10;'); // html 中的换行的转义符
+            });
+        }
+
         card.backside = card.backside.replace(/(?:\r\n|\r|\n)/g, '');
-        // card.backside = card.backside.replace(/，/g, '\\，');
         card.backside = card.backside.replace(/"/g, "'");
         buf += "\"" + card.frontside + "\",\"" + card.backside + "\"\n";
     });
