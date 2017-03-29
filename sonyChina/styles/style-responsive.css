@@ -1,0 +1,284 @@
+/*---------------------------------
+	Responsive part
+-----------------------------------*/
+
+@media screen and (max-width: 975px) {
+
+/*---------------------------------
+	Header
+-----------------------------------*/
+
+	div.header>div {
+		width: 100%;
+	}
+
+	.header-logo {
+		margin: 0 auto;
+	}
+
+/*---------------------------------
+	Article
+-----------------------------------*/
+
+/*  Article - items
+-----------------------------------*/
+
+	ul.items {
+		width: 100%;
+		margin: 1% auto;
+	}
+
+/*---------------------------------
+	Footer
+-----------------------------------*/
+
+	div.footer>div {
+		width: 100%;
+	}
+
+/*  Footer - related links
+-----------------------------------*/
+	
+/*	div.other-site > ul:last-child {
+		float: left;
+	}*/
+
+	div.other-site > ul {
+		padding: 0 2%;
+		width: 14%;
+	}
+
+	div.other-site > ul:last-child {
+		padding: 0 2%;
+		width: 18%;
+	}
+	
+	div.other-site > div {
+		padding: 0 2%;
+		width: 20%;
+	}
+
+	div.other-site > div > ul {
+		padding: 0;
+	}
+
+
+}
+
+
+@media screen and (max-width: 750px) {
+
+	body {
+	/*	margin-top: -24px;*/
+	}
+
+/*---------------------------------
+	Header
+-----------------------------------*/
+
+	.header div:nth-child(1){
+		padding: 6px 0;
+	}
+
+	div.header>div {
+		width: 100%;
+	}
+
+/*  Header - menu & logo & global
+-----------------------------------*/
+
+	#global {
+		display: block;
+		width: 36px;
+		height: 36px;
+	}
+	img#menu, #global img {
+		display: block;
+		width: 20px;
+		height: 20px;
+		padding: 8px;
+		cursor: pointer;
+	}
+	img#menu { float: left; margin-left: 6px; }
+	#global { float: right; margin-right: 6px;}
+
+	.header-logo {
+		position: static;
+		display: block;
+		width: 117px;
+		height: 33px;
+		margin: 0 auto;
+		padding: 2px 0 1px 0;
+	}
+	.header-logo img {
+		position: static;
+		display: block;
+		width: 101px;
+		height: 17px;
+		padding: 8px;
+		margin: 0;
+	}
+	
+	ul.related-site {
+		display: none;
+	}
+
+/*  Header - nav
+-----------------------------------*/
+
+	ul.nav {
+		z-index: 9999;
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	ul.nav li {
+		float: none;
+	}
+	
+	ul.nav li a {
+		border-bottom: 1px solid #494a4d;
+	}
+
+	ul.sec-nav {
+		position: static;
+		/*display: block;*/
+		width: 90%;
+		margin: 0 0 0 10%;
+/*		padding-left: 1em;
+		padding-right: 1em;*/
+	}
+
+/*	ul.nav li:nth-child(1):hover ul.sec-nav {
+		display: none;
+	}*/
+
+/*  Header - search
+-----------------------------------*/
+
+	#search-form {
+		position: static;
+		width: 80%;
+		margin: 0 auto;
+		padding: 12px 0;
+	}/* 因为俩btn已经脱离文档流了，对form设置左右的padding没有效果？？ */
+	#search-btn { margin-left: 12px; }
+
+	#search-text {
+		width: 80%;
+		/*height: 30px;*/
+		float: none;
+		margin: 0 30px;
+	}
+
+	#close-btn {
+		float: right;
+	}
+
+/*  Header - nav & search 's div
+-----------------------------------*/
+
+	div.header {
+		height: 100%;
+	}/* ??? */
+
+/*---------------------------------
+	Abso-nav
+-----------------------------------*/
+
+	ul.abso-nav {
+		display: none;
+	}
+
+/*---------------------------------
+	Article
+-----------------------------------*/
+
+/*  Article - banner
+-----------------------------------*/
+
+	.banner-content ul li a {
+		width: 200%;
+		margin-left: -100%;
+	}
+	
+	.banner-content ul li a img {
+		width: 100%;
+
+	}
+
+	.banner-content ul li a img.twenty-year-gif {
+		width: 40%;
+		margin-left: -20%;
+		margin-top:  -4.6%;
+	}
+
+/*  Article - items
+-----------------------------------*/
+
+	ul.items {
+		width: 100%;
+	}
+
+	ul.items li {
+		width: 33.3%;
+	}
+
+/*---------------------------------
+	Footer
+-----------------------------------*/
+
+/*  Footer - related links
+-----------------------------------*/
+	
+	div.other-site > ul, div.other-site > ul:last-child , div.other-site > div {
+		padding: 0 7%;
+		width: 36%;
+	}
+
+	div.other-site > div > ul {
+		padding: 0;
+	}
+
+
+	div.other-site div, div.other-site ul, div.other-site ul:nth-child(1) {
+		float: none;
+	}
+	div.other-site div {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	div.other-site ul li:nth-child(1) {
+		font-size: 1.1em;
+		line-height: 3em;
+	}
+
+	div.other-site ul li a {
+		font-size: 1em;
+		line-height: 1.8em;
+	}
+
+	ul#follow-us img {
+		display: block;
+	}
+}
+
+
+/** iPhone **/
+@media only screen and (min-width: 320px) and (max-width: 666px) {
+	
+/*---------------------------------
+	Article
+-----------------------------------*/
+
+/*  Article - items
+-----------------------------------*/
+
+	ul.items li {
+		width: 50%;
+	}
+
+
+}

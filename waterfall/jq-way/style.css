@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    background-color: #ccc;
+}
+
+#waterfall {
+    /* 必要-1 */
+    position: relative;
+    margin: 0 auto;
+}
+
+#waterfall .box {
+    /* 必要-2 */
+    /* 除非一开始就设置了 posa 否则需要 float 使得第一个 item 元素的宽度计算正确
+      （而非宽度为 block 块级元素的“占整行”）。即下面 float 和 position 二必选一。
+    */
+    float: left;
+    /*position: absolute;*/
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    background-color: #fff;
+}
+
+#waterfall img {
+    display: block;
+    width: 250px;
+}
+
+#waterfall .new {
+    background-color: yellowgreen;
+}
+
+
+/* for testMulti */
+
+#testMulti {
+    /* 必要-1 */
+    position: relative;
+    margin: 0 auto;
+    border: 1px dashed red;
+}
+
+#testMulti .box {
+    /* 必要-2 */
+    /* 除非一开始就设置了 posa 否则需要 float 使得第一个 item 元素的宽度计算正确
+      （而非宽度为 block 块级元素的“占整行”）。即下面 float 和 position 二必选一。
+    */
+    float: left;
+    /*position: absolute;*/
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    background-color: #fff;
+}
+
+#testMulti img {
+    display: block;
+    width: 250px;
+}

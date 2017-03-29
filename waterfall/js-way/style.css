@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    background-color: #ccc;
+}
+
+#waterfall {
+    /* overflow: hidden; // 写了这行反而有“绝对定位的图片被 hide”的问题 Orz */
+    /* 像下面这样使用相对定位，**只能居中**，其高度会为零（因其内部元素都浮动或绝对定位地脱离文档流了） */
+    position: relative;
+    margin: 0 auto;
+    /* 为了使高度能包含内部元素，在 JS 中进行设置 height .. */
+    /* 像下面这行这样使用 absolute 可以 **创建 BFC** ，但其高度只会包含第一行几个浮动元素 */
+    /* position: absolute; margin-left: 50%; transform: translateX(-50%); */
+    width: 1120px;
+    /* 280px * 4 // js */
+}
+
+
+/**
+ * 像下面这样使用伪元素可以 **清除浮动** ，但其高度只会包含第一行几个浮动元素
+#waterfall::after {
+    clear: both;
+    display: block;
+    content: '\a0';
+}
+*/
+
+#waterfall .box {
+    float: left;
+    padding: 9px;
+}
+
+#waterfall .pic {
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    background-color: #fff;
+}
+
+#waterfall img {
+    width: 250px;
+}
