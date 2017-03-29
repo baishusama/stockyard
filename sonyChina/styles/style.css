@@ -3,19 +3,19 @@
 -----------------------------------*/
 
 body {
-	margin: 0;
-	padding: 0;
-	/*font-family:arial, 'Hiragino Sans GB';*/
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-family : 微软雅黑,宋体;
-
-	margin-bottom: -20px;
+    margin: 0;
+    padding: 0;
+    /*font-family:arial, 'Hiragino Sans GB';*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 微软雅黑, 宋体;
+    margin-bottom: -20px;
 }
 
 ul {
-	list-style-type: none;
+    list-style-type: none;
 }
+
 
 /*#grid {
 	position: absolute;
@@ -35,9 +35,12 @@ ul {
 @colordef #009ffb; blue
 */
 
+
 /*---------------------------------
 	Triangle @header
 -----------------------------------*/
+
+
 /*
 .triangle-right {width: 0;height: 0;border-top: 0.30em solid transparent;border-bottom: 0.30em solid transparent;border-left: 0.30em solid #494a4d;}
 .triangle-right:hover {border-left: 0.30em solid #FFFFFF;}
@@ -50,228 +53,255 @@ ul {
 	Header
 -----------------------------------*/
 
+
 /*  Header - color & logo
 -----------------------------------*/
 
 div.header {
-	background-color: #000;
-	color: #FFF;
+    background-color: #000;
+    color: #FFF;
 }
 
 div.header>div {
-	position: relative;
-	width: 80%;
-	max-width: 1024px;/* 有待调整 */
-	margin: 0 auto;
+    position: relative;
+    width: 80%;
+    max-width: 1024px;
+    /* 有待调整 */
+    margin: 0 auto;
 }
 
 div.menu:after {
-	display: block;
-	content: " ";
-	width: 0;
-	height: 0;
-	clear: both;
+    display: block;
+    content: " ";
+    width: 0;
+    height: 0;
+    clear: both;
 }
 
-img#menu, #global {
-	display: none;
+img#menu,
+#global {
+    display: none;
 }
 
 .header-logo {
-	position: relative;
-	margin-left: -0.25em;
+    position: relative;
+    margin-left: -0.25em;
 }
 
 .header-logo img {
-	margin: 1.5em;/* ???? */
+    margin: 1.5em;
+    /* ???? */
 }
+
 
 /*  Header - related - site
 -----------------------------------*/
 
 ul.related-site {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	position: absolute;
-	top: 10px;
-	right: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    top: 10px;
+    right: 0;
 }
 
 ul.related-site li {
-	float: left;
+    float: left;
 }
 
 ul.related-site li a {
-	display: block;
-	padding: 0.9em 1em;
-	text-decoration: none;
-	color: #a5a5a5;
-	font-size: 0.8em;
+    display: block;
+    padding: 0.9em 1em;
+    text-decoration: none;
+    color: #a5a5a5;
+    font-size: 0.8em;
 }
 
 ul.related-site li:nth-child(-n+2) a {
-	position: relative;
+    position: relative;
 }
 
 ul.related-site li:nth-child(-n+2) a:before {
-	content: " ";
-	border-left: 0.3em solid #494a4d;
-	border-top: 0.3em solid transparent;
-	border-bottom: 0.3em solid transparent;
-	width: 0;
-	height: 0;
-	display: inline-block;
-	/*padding-right: 0.3em;*/
-	position: absolute;
-	top: 50%;
-	left: 4%;
-	margin-top: -0.2em;
+    content: " ";
+    border-left: 0.3em solid #494a4d;
+    border-top: 0.3em solid transparent;
+    border-bottom: 0.3em solid transparent;
+    width: 0;
+    height: 0;
+    display: inline-block;
+    /*padding-right: 0.3em;*/
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    margin-top: -0.2em;
 }
 
 ul.related-site li.last a {
-	color: #FFF;
-	cursor: default;
+    color: #FFF;
+    cursor: default;
 }
 
 ul.related-site li a:hover {
-	color: #FFF;
+    color: #FFF;
 }
 
-ul.related-site li a:hover::before{
-	border-left: 0.3em solid #FFF;
+ul.related-site li a:hover::before {
+    border-left: 0.3em solid #FFF;
 }
+
 
 /*  Header - nav
 -----------------------------------*/
 
 ul.nav {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	/*overflow: hidden;*//*改用伪类after清除浮动，否则二级菜单不可见???*/
-	/*margin-left: 5px;*/
-	/*position: absolute;*/
-	/*	bottom: 1px;*/
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /*overflow: hidden;*/
+    /*改用伪类after清除浮动，否则二级菜单不可见???*/
+    /*margin-left: 5px;*/
+    /*position: absolute;*/
+    /*	bottom: 1px;*/
 }
-ul.nav:after {/*清除浮动把外层div撑起来*//*二级菜单还是不可见QAQ大概是absolute了的二级菜单无法撑开nav？？*/
-	display: block;
-	content: " ";
-	width: 0;
-	height: 0;
-	clear: both;
+
+ul.nav:after {
+    /*清除浮动把外层div撑起来*/
+    /*二级菜单还是不可见QAQ大概是absolute了的二级菜单无法撑开nav？？*/
+    display: block;
+    content: " ";
+    width: 0;
+    height: 0;
+    clear: both;
 }
 
 ul.nav li {
-	float: left;
-	/*position: relative;*/
-	background-color: #000;
+    float: left;
+    /*position: relative;*/
+    background-color: #000;
 }
 
 ul.nav li a {
-	display: block;
-	padding: 1em 1.5em;
-	text-decoration: none;
-	color: #FFF;
-	font-size: 0.8em;
-	/*border: 1px solid red;*/
+    display: block;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 0.8em;
+    /*border: 1px solid red;*/
 }
 
 ul.nav li:nth-child(1) a {
-	position: relative;
+    position: relative;
 }
 
-ul.nav>li:nth-child(1)>a:after {/*选取子元素，避免二级菜单也出现小三角*/
-	content: " ";
-	border-top: 0.4em solid #a5a5a5;
-	border-left: 0.4em solid transparent;
-	border-right: 0.4em solid transparent;
-	width: 0;
-	height: 0;
-	display: inline-block;
-	position: absolute;
-	top: 50%;
-	right: 6%;
-	margin-top: -0.1em;
+ul.nav>li:nth-child(1)>a:after {
+    /*选取子元素，避免二级菜单也出现小三角*/
+    content: " ";
+    border-top: 0.4em solid #a5a5a5;
+    border-left: 0.4em solid transparent;
+    border-right: 0.4em solid transparent;
+    width: 0;
+    height: 0;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    margin-top: -0.1em;
 }
 
 ul.nav li a:hover {
-	color: #8f8f90;
-	/*background: #494a4d;*/
+    color: #8f8f90;
+    /*background: #494a4d;*/
 }
 
 ul.nav li a:hover .sec-nav {
-	display: block;
+    display: block;
 }
 
 ul.nav li:nth-child(1):hover a::after {
-/* ul.nav li:nth-child(1) a:hover::after //原本的顺序
+    /* ul.nav li:nth-child(1) a:hover::after //原本的顺序
    为了当鼠标在二级菜单栏上的时候，小三角仍不显示，调整了顺序 */
-	border-color: transparent;
+    border-color: transparent;
 }
+
 
 /*  Header - sec-nav
 -----------------------------------*/
 
 ul.sec-nav {
-	position: absolute;
-	z-index: 9999;/*避免被.banner遮挡*/
-	display: none;
-	padding: 0;
-	left: auto;
+    position: absolute;
+    z-index: 9999;
+    /*避免被.banner遮挡*/
+    display: none;
+    padding: 0;
+    left: auto;
 }
 
 ul.sec-nav li {
-	float: none;
-	background-color: #000;
+    float: none;
+    background-color: #000;
 }
 
 ul.nav li.hover-show-sec:hover ul.sec-nav {
-	display: block;
+    display: block;
 }
+
 
 /*  Header - search
 -----------------------------------*/
 
 #search-form {
-	/*float: left;*/
-	overflow: hidden;
-	position: absolute;
-	background: #000;
-	bottom: 6px;
-	right: 5px;
+    /*float: left;*/
+    overflow: hidden;
+    position: absolute;
+    background: #000;
+    bottom: 6px;
+    right: 5px;
 }
 
 #search-text {
-	display: block;
+    display: block;
     width: 100px;
-	height: 30px;
-	float: left;
-	/*line-height: 24px;*//*???必须要有么？以及值多少合适？*/
-	font-size: 14px;
+    height: 30px;
+    float: left;
+    /*line-height: 24px;*/
+    /*???必须要有么？以及值多少合适？*/
+    font-size: 14px;
     margin: 0;
-    padding: 0;/*padding: 0.85em 0.1em 0.85em 0.5em;*/
-	border: none;   
+    padding: 0;
+    /*padding: 0.85em 0.1em 0.85em 0.5em;*/
+    border: none;
     outline: none;
     color: #8f8f90;
-    background: #000; 
-    -webkit-transition: width .3s; /* Safari 和 Chrome */
-    -moz-transition: width .3s; /* Firefox 4 */
-	-o-transition: width .3s; /* Opera */
-	transition: width .3s;
+    background: #000;
+    -webkit-transition: width .3s;
+    /* Safari 和 Chrome */
+    -moz-transition: width .3s;
+    /* Firefox 4 */
+    -o-transition: width .3s;
+    /* Opera */
+    transition: width .3s;
     /*box-sizing: border-box;*/
     /*transition: all 0.15s;*/
 }
-::-webkit-input-placeholder { /* WebKit browsers */
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
     color: #8f8f90;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
     color: #8f8f90;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
     color: #8f8f90;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
     color: #8f8f90;
 }
 
@@ -280,7 +310,7 @@ ul.nav li.hover-show-sec:hover ul.sec-nav {
 }
 
 #search-text:focus {
-	color: #FFF;
+    color: #FFF;
 }
 
 #search-btn {
@@ -292,306 +322,333 @@ ul.nav li.hover-show-sec:hover ul.sec-nav {
     padding: 0;
     border: none;
     outline: none;
-    background: #000 url('../images/search_white_17.png') center no-repeat;
+    background: #000 url('http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/search_white_17.png') center no-repeat;
     text-align: center;
     cursor: pointer;
 }
 
 #search-btn:hover {
-	background: #000 url('../images/search_gray_17.png') center no-repeat;
+    background: #000 url('http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/search_gray_17.png') center no-repeat;
 }
 
 #close-btn {
-	display: block;
-	width: 30px;
+    display: block;
+    width: 30px;
     height: 30px;
-	float: right;
+    float: right;
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
-	color: #FFF;
-	background-color: #000;
-	text-align: center;
-	font-size: 20px;
-	cursor: pointer;
+    color: #FFF;
+    background-color: #000;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .hide #close-btn {
-	display: none;
-	/*-webkit-animation:spinBack 3s; Safari and Chrome
+    display: none;
+    /*-webkit-animation:spinBack 3s; Safari and Chrome
 	animation:spinBack 3s;*/
 }
 
 #close-btn:hover {
-	color: #8f8f90;
-	-webkit-animation:spin .5s; /*Safari and Chrome*/
-	animation:spin .5s;
+    color: #8f8f90;
+    -webkit-animation: spin .5s;
+    /*Safari and Chrome*/
+    animation: spin .5s;
 }
 
 @keyframes spin {
-	0% {transform: rotate(360deg);}
-	100% {transform: rotate(0deg);}
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
+
 
 /*---------------------------------
 	Abso-nav
 -----------------------------------*/
 
+
 /*  Abso-nav - basic
 -----------------------------------*/
 
 ul.abso-nav {
-	position: fixed;
-	right: 0;
-	top: 50%;
-	z-index: 9999;
-	margin: 0;
-	margin-top: -127.5px;
-	padding: 0;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 9999;
+    margin: 0;
+    margin-top: -127.5px;
+    padding: 0;
 }
 
 ul.abso-nav li {
-	margin-top: 3px;
+    margin-top: 3px;
 }
 
 ul.abso-nav li a {
-	display: block;
-	width: 48px;
-	height: 48px;
-	outline: none;
-	background-color: rgba(0,0,0,.5);
+    display: block;
+    width: 48px;
+    height: 48px;
+    outline: none;
+    background-color: rgba(0, 0, 0, .5);
 }
 
 ul.abso-nav li a:hover {
-	background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 ul.abso-nav li a img {
-	display: block;/* 解决高度蜜汁多出5px */
-	width: 48px;
-	height: 48px;
+    display: block;
+    /* 解决高度蜜汁多出5px */
+    width: 48px;
+    height: 48px;
 }
 
 ul.abso-nav li a img.small {
-	width: 32px;
-	height: 32px;
-	margin-left: 8px;
-	position: relative;
-	top: 8px;
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+    position: relative;
+    top: 8px;
 }
+
 
 /*  Abso-nav - back-to-top
 -----------------------------------*/
 
 ul.abso-nav li.back-to-top {
-	/*visibility: hidden;*/
-	/*opacity: 0;*/
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
 }
+
 
 /*  Abso-nav - wechat-qrcode
 -----------------------------------*/
 
 ul.abso-nav li.wechat-qrcode div {
-	visibility: hidden;/* 光用透明度的话有问题 */
-	opacity: 0; /* 结合visibility食用，效果更佳 */
-	position: absolute;
-	right: 61px;
-	bottom: 0%;/* 底边对齐了 */
-	margin-bottom: -66px;/* -90px会使箭头指向div的底边;90-24=66;24为div高度的一半 */
-	width: 180px;
-	height: 180px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	background: rgba(0,0,0,.8) url("../images/wechat-qrcode.jpg") no-repeat center;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
-	-ms-transition: all .3s linear;
-	-o-transition: all .3s linear;
-	transition: all .3s linear;/* CSS3实现的淡入渐出效果 */
+    visibility: hidden;
+    /* 光用透明度的话有问题 */
+    opacity: 0;
+    /* 结合visibility食用，效果更佳 */
+    position: absolute;
+    right: 61px;
+    bottom: 0%;
+    /* 底边对齐了 */
+    margin-bottom: -66px;
+    /* -90px会使箭头指向div的底边;90-24=66;24为div高度的一半 */
+    width: 180px;
+    height: 180px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .8) url("http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/wechat-qrcode.jpg") no-repeat center;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    /* CSS3实现的淡入渐出效果 */
 }
 
 ul.abso-nav li.wechat-qrcode:hover div {
-	visibility: visible;
-	opacity: 1; 
+    visibility: visible;
+    opacity: 1;
 }
 
 ul.abso-nav li.wechat-qrcode div:hover {
-	visibility: visible;
-	opacity: 1; 
+    visibility: visible;
+    opacity: 1;
 }
 
 ul.abso-nav li.wechat-qrcode div:after {
-	content: " ";
-	width: 0;
-	height: 0;
-	margin: 0;
-	padding: 0;
-	border-left: 10px solid rgba(0,0,0,.8);
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;
-	display: inline-block;
-	position: absolute;
-	left: 180px;
-	top: 50%;
-	margin-top: -10px;/* 为啥是10px不是5px */
+    content: " ";
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border-left: 10px solid rgba(0, 0, 0, .8);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    display: inline-block;
+    position: absolute;
+    left: 180px;
+    top: 50%;
+    margin-top: -10px;
+    /* 为啥是10px不是5px */
 }
+
 
 /*---------------------------------
 	Article
 -----------------------------------*/
 
+
 /*  Article - banner
 -----------------------------------*/
 
 .banner {
-	position: relative;
+    position: relative;
 }
 
 .banner-content {
-	width: 100%;
-	/*height: 400px;*/
-	overflow: hidden;
-	/*position: relative;*/
+    width: 100%;
+    /*height: 400px;*/
+    overflow: hidden;
+    /*position: relative;*/
 }
 
 .banner-content ul {
-	width: 400%;
-	/*height: 400px; 不必要的 */
-	position: relative;
-	margin: 0;/* 为什么通用选择器没起效果？？ */
-	padding: 0;/* 为什么通用选择器没起效果？？ */
+    width: 400%;
+    /*height: 400px; 不必要的 */
+    position: relative;
+    margin: 0;
+    /* 为什么通用选择器没起效果？？ */
+    padding: 0;
+    /* 为什么通用选择器没起效果？？ */
 }
 
 .banner-content ul li {
-	float: left;
-	width: 25%;
-	/*height: 400px; 不必要 */
-	overflow: hidden;
+    float: left;
+    width: 25%;
+    /*height: 400px; 不必要 */
+    overflow: hidden;
 }
 
 .banner-content ul li a {
-	display: block;
-	max-width: 1900px;
-	/*height: 400px; 不必要 */
-	position: relative;
-	left: 50%;
-	margin-left: -950px;
+    display: block;
+    max-width: 1900px;
+    /*height: 400px; 不必要 */
+    position: relative;
+    left: 50%;
+    margin-left: -950px;
 }
 
 .banner-content ul li a img {
-	display: block;
-	max-width: 1900px;
-	max-height: 400px;
+    display: block;
+    max-width: 1900px;
+    max-height: 400px;
 }
 
 .banner-content ul li a img.twenty-year-gif {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin-left: -260px;
-	margin-top: -60px;
-/*	width: 520px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -260px;
+    margin-top: -60px;
+    /*	width: 520px;
 	height: 120px;*/
-	max-width: 520px;
-	max-height: 120px;
+    max-width: 520px;
+    max-height: 120px;
 }
 
 .banner-nav {
-	position: absolute;
-	padding: 0;
-	bottom: 8px;
-	left: 50%;
-	margin-left: -80px;
+    position: absolute;
+    padding: 0;
+    bottom: 8px;
+    left: 50%;
+    margin-left: -80px;
 }
 
 .banner-nav span {
-	/*border: 10px solid #000;*/
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	background: #494a4d;
-	border: 2px solid #494a4d;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	margin: 10px;
-	opacity: .5;
-	float: left;/* 解决倒T型蜜汁空白——小圆点间，nav和bottom间 */
-	text-indent: -9999px;
+    /*border: 10px solid #000;*/
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #494a4d;
+    border: 2px solid #494a4d;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    opacity: .5;
+    float: left;
+    /* 解决倒T型蜜汁空白——小圆点间，nav和bottom间 */
+    text-indent: -9999px;
 }
 
 .banner-nav span:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .banner-nav span.selected {
-	background-color: #FFF;
-	border-color: #494a4d;
-	cursor: default;
+    background-color: #FFF;
+    border-color: #494a4d;
+    cursor: default;
 }
 
 .banner .banner-btn {
-	/*display: none;*/
-	visibility: hidden;
-	width: 10%;
-	height: 100%;
-	opacity: .5;
-	position: absolute;
-	top: 0;
+    /*display: none;*/
+    visibility: hidden;
+    width: 10%;
+    height: 100%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
 }
 
 .banner:hover .banner-btn {
-	visibility: visible;
+    visibility: visible;
 }
 
 .banner .prev {
-	left: 0;	
-	background: rgba(73,74,77,.5) url("../images/left_white.png") no-repeat center;
+    left: 0;
+    background: rgba(73, 74, 77, .5) url("http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/left_white.png") no-repeat center;
 }
 
 .banner .next {
-	right: 0;
-	background: rgba(73,74,77,.5) url("../images/right_white.png") no-repeat center;
+    right: 0;
+    background: rgba(73, 74, 77, .5) url("http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/right_white.png") no-repeat center;
 }
 
 .banner .banner-btn:hover {
-	/*background-color: rgba(73,74,77,.5);*/
-	opacity: 1;
+    /*background-color: rgba(73,74,77,.5);*/
+    opacity: 1;
 }
+
 
 /*  Article - items
 -----------------------------------*/
 
 ul.items {
-	width: 90%;
-	overflow: hidden;
-	max-width: 1600px;/* ??? */
-	margin: 5% auto;
-	padding: 0;
+    width: 90%;
+    overflow: hidden;
+    max-width: 1600px;
+    /* ??? */
+    margin: 5% auto;
+    padding: 0;
 }
 
 ul.items li {
-	float: left;
-	width: 25%;/* 少0.01%应该没事儿？？ */
-	max-width: 400px;
-	max-height: 400px;
-	overflow: hidden;/* 为了使外围的div不可见 */
-/*	border-left: 1px solid #8f8f90;
+    float: left;
+    width: 25%;
+    /* 少0.01%应该没事儿？？ */
+    max-width: 400px;
+    max-height: 400px;
+    overflow: hidden;
+    /* 为了使外围的div不可见 */
+    /*	border-left: 1px solid #8f8f90;
 	border-bottom: 1px solid #8f8f90;*/
 }
 
 ul.items li a {
-	display: block;
-	width: 100%;
-	height: 100%;
-	max-width: 400px;
-	max-height: 400px;
-	position: relative;
-	overflow: hidden;
-	text-align: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
 }
+
+
 /*
 @转色轮系列
 @colordef #f2c082; 浅橙色
@@ -606,21 +663,46 @@ ul.items li a {
 @colordef #ffc7ba; 超浅粉色
 @colordef #c3887e; 浅暗红色
 */
-ul.items li:nth-child(1) a { background-color: #cef282; }
-ul.items li:nth-child(2) a { background-color: #f1f282; }
-ul.items li:nth-child(3) a { background-color: #c3887e; }
-ul.items li:nth-child(4) a { background-color: #f2829f; }
-ul.items li:nth-child(5) a { background-color: #ddfdeb; }
-ul.items li:nth-child(6) a { background-color: #f2c082; }
-ul.items li:nth-child(7) a { background-color: #82b4f2; }
-ul.items li:nth-child(8) a { background-color: #fff1de; }
+
+ul.items li:nth-child(1) a {
+    background-color: #cef282;
+}
+
+ul.items li:nth-child(2) a {
+    background-color: #f1f282;
+}
+
+ul.items li:nth-child(3) a {
+    background-color: #c3887e;
+}
+
+ul.items li:nth-child(4) a {
+    background-color: #f2829f;
+}
+
+ul.items li:nth-child(5) a {
+    background-color: #ddfdeb;
+}
+
+ul.items li:nth-child(6) a {
+    background-color: #f2c082;
+}
+
+ul.items li:nth-child(7) a {
+    background-color: #82b4f2;
+}
+
+ul.items li:nth-child(8) a {
+    background-color: #fff1de;
+}
 
 ul.items li a img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	position: relative;	
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
+
 
 /*ul.items li:hover a img {
 	width: 110%;
@@ -630,119 +712,137 @@ ul.items li a img {
 }*/
 
 ul.items li a div {
-	display: none;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-align: center;
-	color: #FFF;
-	background-color: rgba(0,0,0,.7);
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, .7);
 }
+
 
 /*---------------------------------
 	Footer
 -----------------------------------*/
 
 div.footer {
-	background-color: #1f2024;
-	padding-bottom: 20px;
+    background-color: #1f2024;
+    padding-bottom: 20px;
 }
 
 div.footer li a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 div.footer>div {
-	position: relative;
-	width: 80%;
-	max-width: 1024px;/* 有待调整 */
-	margin: 0 auto;
+    position: relative;
+    width: 80%;
+    max-width: 1024px;
+    /* 有待调整 */
+    margin: 0 auto;
 }
+
 
 /*  Footer - related links
 -----------------------------------*/
 
 div.other-site {
-	overflow: hidden;
+    overflow: hidden;
 }
 
-div.other-site div { float: right; }
-/*div.other-site div ul { float: none; }*//*用相邻选择器避免无谓的覆盖*/
-div.other-site > ul { float: right; }
-div.other-site > ul:nth-child(1) { float: left; }
+div.other-site div {
+    float: right;
+}
+
+
+/*div.other-site div ul { float: none; }*/
+
+
+/*用相邻选择器避免无谓的覆盖*/
+
+div.other-site > ul {
+    float: right;
+}
+
+div.other-site > ul:nth-child(1) {
+    float: left;
+}
 
 div.other-site ul li {
-	font-size: 0.85em;
-	color: #a5a5a5;
+    font-size: 0.85em;
+    color: #a5a5a5;
 }
 
 div.other-site ul li:nth-child(1) {
-	line-height: 3.5em;
+    line-height: 3.5em;
 }
 
 div.other-site ul li a {
-	font-size: 0.9em;
-	color: #FFF;
+    font-size: 0.9em;
+    color: #FFF;
 }
 
 div.other-site ul li a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 a.location {
-	background: url("../images/location_white.png") right center no-repeat;
-	padding-right: 20px;
+    background: url("http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/location_white.png") right center no-repeat;
+    padding-right: 20px;
 }
 
 a.online-service {
-	background: url("../images/user_white.png") right center no-repeat;
-	padding-right: 20px;
+    background: url("http://ohz4k75du.bkt.clouddn.com/demo/sonyChina/user_white.png") right center no-repeat;
+    padding-right: 20px;
 }
 
 ul#follow-us img {
-	display: none;
-	/*display: block;*/
-	width: 7.2em;
-	padding: 0.4em;
+    display: none;
+    /*display: block;*/
+    width: 7.2em;
+    padding: 0.4em;
 }
+
 
 /*  Footer - information
 -----------------------------------*/
 
 div.information {
-	padding-top: 15px;
-	font-size: 0.75em;
-	border-top: 1px solid #494a4d;
+    padding-top: 15px;
+    font-size: 0.75em;
+    border-top: 1px solid #494a4d;
 }
 
 div.information ul:nth-child(1) {
-	font-size: 0.9em;
+    font-size: 0.9em;
 }
 
 div.information li {
-	display: inline-block;
-	padding: 0 1em 0 1em;
-	color: #494a4d;
+    display: inline-block;
+    padding: 0 1em 0 1em;
+    color: #494a4d;
 }
 
 div.information li a {
-	color: #494a4d;
+    color: #494a4d;
 }
 
 #footer-link a {
-	color: #8f8f90;
+    color: #8f8f90;
 }
 
-div.information li a:hover, #footer-link a:hover {
-	color: #FFFFFF;
+div.information li a:hover,
+#footer-link a:hover {
+    color: #FFFFFF;
 }
 
 #footer-link li:nth-child(4) a {
-	color: #494a4d;
+    color: #494a4d;
 }
 
 #footer-link li.last a {
-	text-decoration: underline;
+    text-decoration: underline;
 }
