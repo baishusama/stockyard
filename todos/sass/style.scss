@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+/* SASS Import */
+
+@import url("./normalize.css");
+
+/* SASS Defination */
+
+$themeColor: powderblue;
+$themeColorDarken10: darken($themeColor,
+10%);
+$themeColorDarken25: darken($themeColor,
+25%);
+$themeColorDarken40: darken($themeColor,
+40%);
+$themeColorLighten10: lighten($themeColor,
+10%);
+$themeColorLighten25: lighten($themeColor,
+25%);
+$themeColorLighten40: lighten($themeColor,
+40%);
+$checkBoxWidth: 50px;
+$lineHeight: 50px;
+$hiddenPieceHeight: 6px;
+$pdToMainBd: 16px;
+@mixin placeholder($color,
+$font) {
+    &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: $color;
+        font-style: $font;
+    }
+    &::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $color;
+        font-style: $font;
+    }
+    &:-moz-placeholder {
+        /* Firefox 18- */
+        color: $color;
+        font-style: $font;
+    }
+    &:-ms-input-placeholder {
+        /* IE 10+ */
+        color: $color;
+        font-style: $font;
+    }
+}
+
+@mixin transform($values) {
+    -webkit-transform: $values;
+    -ms-transform: $values;
+    -o-transform: $values;
+    transform: $values;
+}
+
+@mixin box-sizing($box: border-box) {
+    -webkit-box-sizing: $box;
+    -moz-box-sizing: $box;
+    box-sizing: $box;
+}
+
+@mixin hiddenPiecePseudo($index) {
+    position: absolute;
+    left: percentage($index/100);
+    bottom: - $hiddenPieceHeight * $index;
+    display: block;
+    content: '\a0';
+    width: percentage(1-$index/100*2);
+    height: $hiddenPieceHeight;
+    background-color: #eee;
+    @include tinnyBoxshadow();
+}
+
+@mixin tinnyBoxshadow() {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+
+/* Specific */
+
+html,
+body {
+    height: 100%;
+    background-color: aliceblue;
+    font-family: lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+header h2 {
+    margin: 20px 0;
+    color: $themeColor;
+    text-align: center;
+    font-size: 80px;
+    font-weight: normal;
+}
+
+.main {
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+    background-color: #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .2), 0 0 2px rgba(0, 0, 0, .3);
+    /* &:before {
+    @include hiddenPiecePseudo(2);
+  } */
+    input[type="checkbox"] {
+        display: none; // test
+        &#checkAllTodo + label + input,
+        /* 用于添加 todo 的 input 输入框 */
+        & + label + div {
+            /* 所有的 div 输入框 */
+            $paddingY: 12px;
+            overflow: hidden;
+            float: right; //left;
+            display: block;
+            // @include box-sizing();
+            border: none;
+            padding: $paddingY 40px $paddingY 20px;
+            width: 100%;
+            max-width: 100%;
+            line-height: $lineHeight - $paddingY * 2;
+            font-size: 20px;
+            outline: none;
+            word-break: break-all;
+            &[contentEditable="true"] {
+                // @include box-sizing();
+                border: 1px solid $themeColorDarken40;
+                padding: ($paddingY - 1px) (20px - 1px) ($paddingY - 1px) (20px - 1px);
+                box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.2), inset -1px 0 2px rgba(0, 0, 0, 0.1), inset 1px 0 2px rgba(0, 0, 0, 0.1);
+                // word-break: inherit;
+                // white-space: nowrap;
+            }
+        }
+    }
+    label {
+        /* 所有的 label */
+        position: absolute;
+        top: 50%;
+        left: 0;
+        float: left;
+        display: block;
+        margin-top: -25px;
+        width: $checkBoxWidth;
+        height: $lineHeight;
+    }
+    .head {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid #ccc;
+        padding-left: 50px;
+        input:checked {
+            /* 全选框 - 被选中 */
+            & + label {
+                &:before {
+                    color: $themeColorDarken10;
+                }
+            }
+        }
+        label {
+            /* 全选框 */
+            &:before {
+                position: absolute;
+                top: 13px;
+                left: 20px;
+                display: block;
+                content: '<';
+                width: 10px;
+                height: 25px;
+                line-height: 25px;
+                color: #eee;
+                @include transform(scaleX(2) rotate(-90deg));
+            }
+        }
+        #todoInput {
+            @include placeholder(#ddd,
+            italic);
+        }
+    }
+    #todo-list {
+        &:before {
+            @include hiddenPiecePseudo(2);
+        }
+        &:after {
+            @include hiddenPiecePseudo(1);
+        }
+        &.active {
+            .completed-item {
+                display: none;
+            }
+        }
+        &.completed {
+            .todo-item {
+                display: none;
+            }
+        }
+        li {
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            padding-left: $checkBoxWidth;
+            input:checked {
+                /* 复选框 - 被选中 */
+                & + label {
+                    &:before {
+                        border-color: $themeColorLighten10;
+                    }
+                    &:after {
+                        position: absolute;
+                        top: 20px;
+                        left: 15px;
+                        display: inline-block;
+                        content: '\a0';
+                        width: 20px;
+                        height: 8px;
+                        border-left: 2px solid $themeColorDarken10;
+                        border-bottom: 2px solid $themeColorDarken10;
+                        @include transform(rotate(-50deg)); // skew(-10deg)
+                    }
+                }
+                & ~ .todo {
+                    color: #ddd;
+                    text-decoration: line-through;
+                }
+            }
+            label {
+                /* 复选框 */
+                &:before {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    display: block;
+                    content: '\a0';
+                    width: 30px;
+                    height: 30px;
+                    border: 1px solid #eee;
+                    border-radius: 15px;
+                }
+            }
+            .todo {
+                /* input:checked ~ & {
+          color: #ddd;
+          text-decoration: line-through;
+        } */
+            }
+            /* This nested way doesn't work. Why??? */
+            &:hover .delete {
+                display: block;
+            }
+            &:hover div[contentEditable="true"] + .delete {
+                display: none;
+            }
+            .delete {
+                display: none;
+                position: absolute;
+                right: $pdToMainBd;
+                bottom: $pdToMainBd;
+                color: $themeColorDarken25;
+                font-family: "Microsoft YaHei";
+                // transform: scaleX(1.4);
+                @include transform(scaleX(1.4));
+                &:hover {
+                    color: $themeColorDarken40;
+                }
+            }
+        }
+    }
+    .footer {
+        position: relative;
+        padding: 6px;
+        color: #888;
+        text-align: center;
+        font-size: 13px;
+        @include tinnyBoxshadow();
+        #info {
+            position: absolute;
+            top: 6px + 3px;
+            left: $pdToMainBd;
+        }
+        #option {
+            display: inline-block;
+            span {
+                display: inline-block;
+                border: 1px solid transparent;
+                border-radius: 3px;
+                padding: 3px 5px;
+                &:hover {
+                    border-color: $themeColor;
+                    cursor: pointer;
+                }
+                &.chosen {
+                    border-color: $themeColorDarken10;
+                }
+            }
+        }
+        #clear {
+            position: absolute;
+            top: 6px;
+            right: $pdToMainBd - 5px;
+            padding: 3px 5px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+footer {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 500px;
+    p {
+        margin-bottom: 10px;
+        color: #ccc;
+        text-align: center;
+        font-size: 12px;
+    }
+}

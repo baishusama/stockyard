@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To Do List by JavaScript</title>
+  <!-- /*<style src="./css/style.css"></style>*/ -->
+  <!-- <link rel="stylesheet" href="./css/normalize.css"> -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <h2>todos</h2>
+  </header>
+  <div class="main">
+    <div class="head">
+      <input id="checkAllTodo" type="checkbox">     
+      <label for="checkAllTodo"></label>
+      <input type="text" placeholder="What needs to be done?" id="todoInput" />
+      <!-- <span class="add">+</span> -->
+    </div>
+    <ul id="todo-list">
+      <li class="todo-item">
+        <input type="checkbox" id="checkTodo1"/>
+        <label for="checkTodo1"></label>
+        <div class="todo" placeholder="something to do..." onblur="this.contentEditable='false';">吃饭</div>
+        <span class="delete">x</span>
+      </li>
+      <li class="todo-item">
+        <input type="checkbox" id="checkTodo2"/>
+        <label for="checkTodo2"></label>
+        <div class="todo" placeholder="something to do..." onblur="this.contentEditable='false';">睡觉</div>
+        <span class="delete">x</span>
+      </li>
+      <li class="todo-item">
+        <input type="checkbox" id="checkTodo3"/>
+        <label for="checkTodo3"></label>
+        <div class="todo" placeholder="something to do..." onblur="this.contentEditable='false';">打豆豆</div>
+        <span class="delete">x</span>
+      </li>
+    </ul>
+    <div class="footer">
+      <span id="info"><span class="num">3</span> items left</span>
+      <div id="option">
+        <span class="all chosen">All</span>
+        <span class="active">Active</span>
+        <span class="completed">Completed</span>
+      </div>
+      <span id="clear">Clear completed</span>
+    </div>
+  </div>
+  <footer>
+    <p>双击来编辑每个 todo</p>
+    <p>回车添加新的 todo</p>
+    <p>Enjoy it :)</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

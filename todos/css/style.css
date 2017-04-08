@@ -1,0 +1,226 @@
+@charset "UTF-8";
+/* SASS Import */
+@import url("./normalize.css");
+/* SASS Defination */
+/* Specific */
+html,
+body {
+  height: 100%;
+  background-color: aliceblue;
+  font-family: lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
+
+header h2 {
+  margin: 20px 0;
+  color: powderblue;
+  text-align: center;
+  font-size: 80px;
+  font-weight: normal; }
+
+.main {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.3);
+  /* &:before {
+  @include hiddenPiecePseudo(2);
+} */ }
+  .main input[type="checkbox"] {
+    display: none; }
+    .main input[type="checkbox"]#checkAllTodo + label + input, .main input[type="checkbox"] + label + div {
+      /* 所有的 div 输入框 */
+      overflow: hidden;
+      float: right;
+      display: block;
+      border: none;
+      padding: 12px 40px 12px 20px;
+      width: 100%;
+      max-width: 100%;
+      line-height: 26px;
+      font-size: 20px;
+      outline: none;
+      word-break: break-all; }
+      .main input[type="checkbox"]#checkAllTodo + label + input[contentEditable="true"], .main input[type="checkbox"] + label + div[contentEditable="true"] {
+        border: 1px solid #318e99;
+        padding: 11px 19px 11px 19px;
+        box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.2), inset -1px 0 2px rgba(0, 0, 0, 0.1), inset 1px 0 2px rgba(0, 0, 0, 0.1); }
+  .main label {
+    /* 所有的 label */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    float: left;
+    display: block;
+    margin-top: -25px;
+    width: 50px;
+    height: 50px; }
+  .main .head {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    padding-left: 50px; }
+    .main .head input:checked {
+      /* 全选框 - 被选中 */ }
+      .main .head input:checked + label:before {
+        color: #89d1da; }
+    .main .head label {
+      /* 全选框 */ }
+      .main .head label:before {
+        position: absolute;
+        top: 13px;
+        left: 20px;
+        display: block;
+        content: '<';
+        width: 10px;
+        height: 25px;
+        line-height: 25px;
+        color: #eee;
+        -webkit-transform: scaleX(2) rotate(-90deg);
+        -ms-transform: scaleX(2) rotate(-90deg);
+        -o-transform: scaleX(2) rotate(-90deg);
+        transform: scaleX(2) rotate(-90deg); }
+    .main .head #todoInput::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #ddd;
+      font-style: italic; }
+    .main .head #todoInput::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #ddd;
+      font-style: italic; }
+    .main .head #todoInput:-moz-placeholder {
+      /* Firefox 18- */
+      color: #ddd;
+      font-style: italic; }
+    .main .head #todoInput:-ms-input-placeholder {
+      /* IE 10+ */
+      color: #ddd;
+      font-style: italic; }
+  .main #todo-list:before {
+    position: absolute;
+    left: 2%;
+    bottom: -12px;
+    display: block;
+    content: '\a0';
+    width: 96%;
+    height: 6px;
+    background-color: #eee;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
+  .main #todo-list:after {
+    position: absolute;
+    left: 1%;
+    bottom: -6px;
+    display: block;
+    content: '\a0';
+    width: 98%;
+    height: 6px;
+    background-color: #eee;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
+  .main #todo-list.active .completed-item {
+    display: none; }
+  .main #todo-list.completed .todo-item {
+    display: none; }
+  .main #todo-list li {
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid #eee;
+    padding-left: 50px;
+    /* This nested way doesn't work. Why??? */ }
+    .main #todo-list li input:checked {
+      /* 复选框 - 被选中 */ }
+      .main #todo-list li input:checked + label:before {
+        border-color: #d7eff2; }
+      .main #todo-list li input:checked + label:after {
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        display: inline-block;
+        content: '\a0';
+        width: 20px;
+        height: 8px;
+        border-left: 2px solid #89d1da;
+        border-bottom: 2px solid #89d1da;
+        -webkit-transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg);
+        -o-transform: rotate(-50deg);
+        transform: rotate(-50deg); }
+      .main #todo-list li input:checked ~ .todo {
+        color: #ddd;
+        text-decoration: line-through; }
+    .main #todo-list li label {
+      /* 复选框 */ }
+      .main #todo-list li label:before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: block;
+        content: '\a0';
+        width: 30px;
+        height: 30px;
+        border: 1px solid #eee;
+        border-radius: 15px; }
+    .main #todo-list li .todo {
+        /* input:checked ~ & {
+  color: #ddd;
+  text-decoration: line-through;
+} */ }
+    .main #todo-list li:hover .delete {
+      display: block; }
+    .main #todo-list li:hover div[contentEditable="true"] + .delete {
+      display: none; }
+    .main #todo-list li .delete {
+      display: none;
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      color: #4fbac7;
+      font-family: "Microsoft YaHei";
+      -webkit-transform: scaleX(1.4);
+      -ms-transform: scaleX(1.4);
+      -o-transform: scaleX(1.4);
+      transform: scaleX(1.4); }
+      .main #todo-list li .delete:hover {
+        color: #318e99; }
+  .main .footer {
+    position: relative;
+    padding: 6px;
+    color: #888;
+    text-align: center;
+    font-size: 13px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
+    .main .footer #info {
+      position: absolute;
+      top: 9px;
+      left: 16px; }
+    .main .footer #option {
+      display: inline-block; }
+      .main .footer #option span {
+        display: inline-block;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        padding: 3px 5px; }
+        .main .footer #option span:hover {
+          border-color: powderblue;
+          cursor: pointer; }
+        .main .footer #option span.chosen {
+          border-color: #89d1da; }
+    .main .footer #clear {
+      position: absolute;
+      top: 6px;
+      right: 11px;
+      padding: 3px 5px;
+      cursor: pointer; }
+      .main .footer #clear:hover {
+        text-decoration: underline; }
+
+footer {
+  margin: 50px auto;
+  width: 80%;
+  max-width: 500px; }
+  footer p {
+    margin-bottom: 10px;
+    color: #ccc;
+    text-align: center;
+    font-size: 12px; }
+
+/*# sourceMappingURL=style.css.map */
