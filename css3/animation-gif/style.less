@@ -1,0 +1,293 @@
+@theme-color: lightpink;
+@brush-color: #fff;
+@bg-color: deeppink;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    min-height: 100vh;
+    background-color: @theme-color;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    margin: auto;
+    width: 490px;
+    height: 390px;
+}
+
+.animation {
+    width: 100px;
+    height: 100px;
+    background-color: @bg-color;
+}
+
+
+/* 争分夺秒的时钟 */
+
+#clock {
+    @w: 2px;
+    display: flex;
+    div {
+        @size: 30px;
+        position: relative;
+        margin: auto;
+        border: @w solid @brush-color;
+        border-radius: 50%;
+        padding: (@size - @w * 3) / 2;
+        width: @size;
+        height: @size;
+        background-clip: content-box;
+        background-color: @brush-color;
+        &::before,
+        &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+            content: '\200b';
+            width: @w;
+            background-color: @brush-color;
+            transform: translate(-50%, -100%);
+            transform-origin: 50% 100%;
+        }
+        &::before {
+            height: 8px;
+            animation: spin_with_translate 6s linear infinite;
+        }
+        &::after {
+            height: 11px;
+            animation: spin_with_translate 1.5s linear infinite;
+        }
+    }
+}
+
+@keyframes spin_with_translate {
+    0% {
+        transform: translate(-50%, -100%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -100%) rotate(360deg);
+    }
+}
+
+
+/* 当前位置是。。 */
+
+#site {
+    display: flex;
+    div {
+        @size: 40px;
+        position: relative;
+        margin: auto;
+        width: @size;
+        height: @size;
+        &::before {
+            display: block;
+            content: '\200b';
+            border-radius: 100%;
+            margin: 70% auto 0; // div's h === w
+            width: 80%;
+            height: 30%;
+            background-color: hsla(0, 0%, 100%, .4);
+        }
+        &::after {
+            @after-size: 60%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+            content: '\200b';
+            border: 2px solid @brush-color;
+            border-radius: 50% 50% 50% 0;
+            width: @after-size;
+            height: @after-size;
+            // transform-origin: 0 100%;
+            transform: translate(-50%, -80%) rotate(-45deg);
+            animation: floating .7s infinite alternate linear;
+        }
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(-50%, -80%) rotate(-45deg);
+    }
+    100% {
+        transform: translate(-50%, -100%) rotate(-45deg);
+    }
+}
+
+
+/* 充电中 */
+
+#charge {
+    display: flex;
+    div {
+        position: relative;
+        margin: auto;
+        border: 1px solid @brush-color;
+        border-radius: 2px;
+        width: 36px;
+        height: 20px;
+        &::before,
+        &::after {
+            display: block;
+            content: '\200b';
+            background-color: @brush-color;
+        }
+        &::before {
+            @w: 3px;
+            position: absolute;
+            top: 50%;
+            right: -(@w + 2px);
+            border-top-right-radius: @w;
+            border-bottom-right-radius: @w;
+            width: @w;
+            height: 50%;
+            transform: translateY(-50%);
+        }
+        &::after {
+            width: 0;
+            height: 100%;
+            animation: charging 2s infinite;
+        }
+    }
+}
+
+@keyframes charging {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+
+/* 放大～缩小～ */
+
+#zoom {
+    display: flex;
+    div {
+        @size: 30px;
+        position: relative;
+        display: flex;
+        margin: auto;
+        border: 2px solid @brush-color;
+        border-radius: 50%;
+        width: @size;
+        height: @size;
+        animation: zooming 1s infinite alternate linear;
+        &::before {
+            margin: auto;
+            // display: block;
+            content: "me";
+            color: @brush-color;
+        }
+        &::after {
+            position: absolute;
+            top: 94%;
+            left: 94%;
+            display: block;
+            content: '\200b';
+            border-radius: 0 0 1px 1px;
+            width: 2px;
+            height: 14px;
+            background-color: @brush-color;
+            transform-origin: 50% 0;
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+@keyframes zooming {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+
+/* 旋转跳跃 */
+
+#rotate {
+    display: flex;
+    div {
+        @size: 40px;
+        margin: auto;
+        border: 1px solid @brush-color;
+        border-radius: 50%;
+        width: @size;
+        height: @size;
+        animation: spin 1s infinite ease-in-out;
+        &::after {
+            @after-size: 5px;
+            @distance: 4px;
+            display: block;
+            content: '\200b';
+            margin-top: @distance;
+            margin-left: @distance;
+            border-radius: 50%;
+            width: @after-size;
+            height: @after-size;
+            background-color: @brush-color;
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+
+/* 暗中观察中的双眼 */
+
+#eyes {
+    @eye-size: 20px;
+    display: flex;
+    div {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        width: 66px;
+    }
+    .eye {
+        border-radius: 50%;
+        width: @eye-size;
+        height: @eye-size;
+        background-color: @brush-color;
+        &::after {
+            display: block;
+            content: '\200b';
+            margin-top: 30%;
+            border-radius: 50%;
+            width: 60%;
+            height: 60%;
+            background-color: @bg-color;
+            animation: lookaround 1.5s infinite alternate ease-in-out;
+        }
+    }
+}
+
+@keyframes lookaround {
+    0% {
+        margin-left: 6%;
+    }
+    100% {
+        margin-left: 40%;
+    }
+}
