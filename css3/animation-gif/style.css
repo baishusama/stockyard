@@ -123,8 +123,8 @@ main {
   height: 60%;
   -webkit-transform: translate(-50%, -80%) rotate(-45deg);
           transform: translate(-50%, -80%) rotate(-45deg);
-  -webkit-animation: floating .7s infinite alternate linear;
-          animation: floating .7s infinite alternate linear;
+  -webkit-animation: floating .5s infinite alternate linear;
+          animation: floating .5s infinite alternate linear;
 }
 @-webkit-keyframes floating {
   0% {
@@ -276,8 +276,8 @@ main {
 #rotate div::after {
   display: block;
   content: '\200b';
-  margin-top: 4px;
-  margin-left: 4px;
+  margin-top: 5px;
+  margin-left: 5px;
   border-radius: 50%;
   width: 5px;
   height: 5px;

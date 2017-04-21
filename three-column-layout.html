@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>三栏布局</title>
+    <style>
+    /* 基础样式 */
+    
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: #ddd;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+    }
+    
+    h1 {
+        padding: 20px 0;
+        text-align: center;
+    }
+    
+    .wrapper {
+        margin-bottom: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+    
+    header {
+        background-color: deeppink;
+        color: #fff;
+        line-height: 60px;
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    aside {
+        padding: 10px;
+    }
+    
+    .left {
+        width: 200px;
+        background-color: skyblue;
+        color: #fff;
+    }
+    
+    .right {
+        width: 160px;
+        background-color: yellowgreen;
+        color: #fff;
+    }
+    
+    .content {
+        padding: 10px;
+        background-color: mistyrose;
+    }
+    
+    strong {
+        color: deeppink;
+    }
+    
+    .comment {
+        color: #bbb;
+    }
+    /* 页面自身的整体布局 */
+    
+    body {
+        padding-right: 260px;
+    }
+    
+    .layouts-wrapper {
+        padding: 10px;
+    }
+    
+    #sidebar {
+        position: fixed;
+        top: 50%;
+        right: 15px;
+        overflow: hidden;
+        border-radius: 4px;
+        padding: 0;
+        width: 240px;
+        background-color: #fff;
+        box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+        transform: translateY(-50%);
+    }
+    
+    #sidebar header {
+        font-size: 16px;
+        line-height: 2;
+        text-align: center;
+    }
+    
+    #sidebar h2 {
+        display: inline-block;
+    }
+    
+    #sidebar .top {
+        position: absolute;
+        top: 9px;
+        right: 10px;
+        border: 1px solid #fff;
+        border-radius: 4px;
+        padding: 6px;
+        color: #fff;
+        line-height: 1;
+        text-decoration: none;
+    }
+    
+    #sidebar li,
+    #sidebar li a {
+        color: deeppink;
+    }
+    
+    :target {
+        animation: hightlight .6s linear;
+    }
+    
+    @keyframes hightlight {
+        0% {
+            background-color: deeppink;
+        }
+        50% {
+            background-color: orange;
+        }
+        100% {
+            background-color: deeppink;
+        }
+    }
+    /* 页面展示的各个布局 */
+    /* 流体布局 */
+    
+    .wrapper-1 .left {
+        float: left;
+    }
+    
+    .wrapper-1 .right {
+        float: right;
+    }
+    
+    .wrapper-1 .content {
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    /* BFC */
+    
+    .wrapper-2 .left {
+        float: left;
+    }
+    
+    .wrapper-2 .right {
+        float: right;
+    }
+    
+    .wrapper-2 .content {
+        overflow: hidden;
+    }
+    /* 绝对定位布局 */
+    
+    .wrapper-3 main {
+        position: relative;
+        /* 外层设置 padding */
+        /*padding-left: 200px;
+        padding-right: 160px;*/
+    }
+    
+    .wrapper-3 .content {
+        /* 或者 内层设置 margin */
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    
+    .wrapper-3 .left {
+        position: absolute;
+        top: 0;
+        /* 外层设置 padding 时才需要 */
+        /*left: 0;*/
+    }
+    
+    .wrapper-3 .right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    /* 圣杯布局 */
+    
+    .wrapper-4 main {
+        /* 这里不能使用 overflow: hidden; 清除浮动 */
+        /* 不然会使 aside(.left & .right) 被 hidden */
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    
+    .wrapper-4 main::after {
+        /* 借助伪元素清除浮动 */
+        clear: both;
+        display: block;
+        content: '\200b';
+        width: 0;
+        height: 0;
+    }
+    
+    .wrapper-4 .content {
+        float: left;
+        width: 100%;
+    }
+    
+    .wrapper-4 .left {
+        float: left;
+        margin-left: -100%;
+        position: relative;
+        right: 200px;
+    }
+    
+    .wrapper-4 .right {
+        float: left;
+        margin-right: -160px;
+    }
+    /* 双飞翼布局 */
+    
+    .wrapper-5 main {
+        /* 这里可以使用 overflow: hidden; 清除浮动 */
+        overflow: hidden;
+    }
+    
+    .wrapper-5 .content-wrapper {
+        float: left;
+        width: 100%;
+    }
+    
+    .wrapper-5 .content {
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    
+    .wrapper-5 .left {
+        float: left;
+        margin-left: -100%;
+    }
+    
+    .wrapper-5 .right {
+        float: left;
+        margin-left: -160px;
+    }
+    /* Flex 布局*/
+    
+    .wrapper-6 main {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        /* 如果不想三栏等高可以取消注释下面这行 */
+        /*align-items: flex-start;*/
+    }
+    
+    .wrapper-6 .content {
+        flex-grow: 1;
+    }
+    
+    .wrapper-6 .left {
+        order: -1;
+        flex-basis: 200px;
+    }
+    
+    .wrapper-6 .right {
+        flex-basis: 160px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>常见布局整理</h1>
+    <div class="layouts-wrapper">
+        <div class="wrapper wrapper-1">
+            <header id="1-流体布局">流体布局</header>
+            <main>
+                <aside class="left">
+                    <h2>aside.left</h2>
+                    <p><pre>width: 200px;</pre></p>
+                </aside>
+                <aside class="right">
+                    <h2>aside.right</h2>
+                    <p><pre>width: 160px;</pre></p>
+                </aside>
+                <div class="content">
+                    <h2>.content</h2>
+                    <p>这里三栏的 HTML 结构大致如下：</p>
+                    <pre>
+    &lt;main&gt;
+        &lt;aside class="left"&gt;&lt;/aside&gt;
+        &lt;aside class="right"&gt;&lt;/aside&gt;
+        &lt;div class="content"&gt;&lt;/div&gt;
+    &lt;/main&gt;
+                </pre>
+                    <p>这里三栏的 CSS 样式大致如下：</p>
+                    <pre>
+    <span class="comment">/* 流体布局 */</span>
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .content {
+        <strong>margin-left: 200px;
+        margin-right: 160px;</strong>
+    }
+                </pre>
+                </div>
+            </main>
+        </div>
+        <div class="wrapper wrapper-2">
+            <header id="2-三栏布局">BFC 三栏布局</header>
+            <main>
+                <aside class="left">
+                    <h2>aside.left</h2>
+                    <p><pre>width: 200px;</pre></p>
+                </aside>
+                <aside class="right">
+                    <h2>aside.right</h2>
+                    <p><pre>width: 160px;</pre></p>
+                </aside>
+                <div class="content">
+                    <h2>.content</h2>
+                    <p>这里三栏的 HTML 结构大致如下：</p>
+                    <pre>
+    &lt;main&gt;
+        &lt;aside class="left"&gt;&lt;/aside&gt;
+        &lt;aside class="right"&gt;&lt;/aside&gt;
+        &lt;div class="content"&gt;&lt;/div&gt;
+    &lt;/main&gt;
+                </pre>
+                    <p>这里三栏的 CSS 样式大致如下：</p>
+                    <pre>
+    <span class="comment">/* BFC */</span>
+    
+    .left {
+        float: left;
+    }
+    
+    .right {
+        float: right;
+    }
+    
+    .content {
+        <strong>overflow: hidden;</strong>
+    }
+                </pre>
+                </div>
+            </main>
+        </div>
+        <div class="wrapper wrapper-3">
+            <header id="3-绝对定位布局">绝对定位布局</header>
+            <main>
+                <div class="content">
+                    <h2>.content</h2>
+                    <p>这里三栏的 HTML 结构大致如下：</p>
+                    <pre>
+    &lt;main&gt;
+        <strong>&lt;div class="content"&gt;&lt;/div&gt;</strong>
+        &lt;aside class="left"&gt;&lt;/aside&gt;
+        &lt;aside class="right"&gt;&lt;/aside&gt;
+    &lt;/main&gt;
+                </pre>
+                    <p>这里三栏的 CSS 样式大致如下：</p>
+                    <pre>
+    <span class="comment">/* 绝对定位布局 */</span>
+    
+    main {
+        position: relative;
+        <span class="comment">/* 外层设置 padding */</span>
+        <span class="comment">/*padding-left: 200px;
+        padding-right: 160px;*/</span>
+    }
+    
+    .content {
+        <span class="comment">/* 或者 内层设置 margin */</span>
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    
+    .left {
+        position: absolute;
+        top: 0;
+        <span class="comment">/* 外层设置 padding 时才需要 */</span>
+        <span class="comment">/*left: 0;*/</span>
+    }
+    
+    .right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+                </pre>
+                </div>
+                <aside class="left">
+                    <h2>aside.left</h2>
+                    <p><pre>width: 200px;</pre></p>
+                </aside>
+                <aside class="right">
+                    <h2>aside.right</h2>
+                    <p><pre>width: 160px;</pre></p>
+                </aside>
+            </main>
+        </div>
+        <div class="wrapper wrapper-4">
+            <header id="4-圣杯布局">圣杯布局</header>
+            <main>
+                <div class="content">
+                    <h2>.content</h2>
+                    <p>这里三栏的 HTML 结构大致如下：</p>
+                    <pre>
+    &lt;main&gt;
+        <strong>&lt;div class="content"&gt;&lt;/div&gt;</strong>
+        &lt;aside class="left"&gt;&lt;/aside&gt;
+        &lt;aside class="right"&gt;&lt;/aside&gt;
+    &lt;/main&gt;
+                </pre>
+                    <p>这里三栏的 CSS 样式大致如下：</p>
+                    <pre>
+    <span class="comment">/* 圣杯布局 */</span>
+
+    main {
+        <span class="comment">/* 这里不能使用 overflow: hidden; 清除浮动 */</span>
+        <span class="comment">/* 不然会使 aside(.left &amp; .right) 被 hidden */</span>
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    
+    main::after {
+        <span class="comment">/* 借助伪元素清除浮动 */</span>
+        clear: both;
+        display: block;
+        content: '\200b';
+        width: 0;
+        height: 0;
+    }
+    
+    .content {
+        float: left;
+        width: 100%;
+    }
+    
+    .left {
+        float: left;
+        <strong>margin-left: -100%;</strong>
+        position: relative;
+        <strong>right: 200px;</strong>
+    }
+    
+    .right {
+        float: left;
+        <strong>margin-right: -160px;</strong>
+    }
+                </pre>
+                </div>
+                <aside class="left">
+                    <h2>aside.left</h2>
+                    <p><pre>width: 200px;</pre></p>
+                </aside>
+                <aside class="right">
+                    <h2>aside.right</h2>
+                    <p><pre>width: 160px;</pre></p>
+                </aside>
+            </main>
+        </div>
+        <div class="wrapper wrapper-5">
+            <header id="5-双飞翼布局">双飞翼布局</header>
+            <main>
+                <div class="content-wrapper">
+                    <div class="content">
+                        <h2>.content</h2>
+                        <p>这里三栏的 HTML 结构大致如下：</p>
+                        <pre>
+    &lt;main&gt;
+        <strong>&lt;div class="content-wrapper"&gt;
+            &lt;div class="content"&gt;&lt;/div&gt;
+        &lt;/div&gt;</strong>
+        &lt;aside class="left"&gt;&lt;/aside&gt;
+        &lt;aside class="right"&gt;&lt;/aside&gt;
+    &lt;/main&gt;
+                    </pre>
+                        <p>这里三栏的 CSS 样式大致如下：</p>
+                        <pre>
+    <span class="comment">/* 双飞翼布局 */</span>
+
+    main {
+        <span class="comment">/* 这里可以使用 overflow: hidden; 清除浮动 */</span>
+        overflow: hidden;
+    }
+    
+    .content-wrapper {
+        float: left;
+        width: 100%;
+    }
+    
+    .content {
+        margin-left: 200px;
+        margin-right: 160px;
+    }
+    
+    .left {
+        float: left;
+        <strong>margin-left: -100%;</strong>
+    }
+    
+    .right {
+        float: left;
+        <strong>margin-left: -160px;</strong>
+    }
+                    </pre>
+                    </div>
+                </div>
+                <aside class="left">
+                    <h2>aside.left</h2>
+                    <p><pre>width: 200px;</pre></p>
+                </aside>
+                <aside class="right">
+                    <h2>aside.right</h2>
+                    <p><pre>width: 160px;</pre></p>
+                </aside>
+            </main>
+        </div>
+        <div class="wrapper wrapper-6">
+            <header id="6-flex布局">Flex 布局</header>
+            <main>
+                <div class="content">
+                    <h2>.content</h2>
+                    <p>这里三栏的 HTML 结构大致如下：</p>
+                    <pre>
+    &lt;main&gt;
+        <strong>&lt;div class="content"&gt;&lt;/div&gt;</strong>
+        &lt;aside class="left"&gt;&lt;/aside&gt;
+        &lt;aside class="right"&gt;&lt;/aside&gt;
+    &lt;/main&gt;
+                </pre>
+                    <p>这里三栏的 CSS 样式大致如下：</p>
+                    <pre>
+    <span class="comment">/* Flex 布局 */</span>
+    
+    main {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        <strong>display: flex;</strong>
+        <span class="comment">/* 如果不想三栏等高可以取消注释下面这行 */</span>
+        <span class="comment">/*align-items: flex-start;*/</span>
+    }
+    
+    .content {
+        <strong>flex-grow: 1;</strong>
+    }
+    
+    .left {
+        <strong>order: -1;</strong>
+        <strong>flex-basis: 200px;</strong>
+    }
+    
+    .right {
+        <strong>flex-basis: 160px;</strong>
+    }
+                </pre>
+                </div>
+                <aside class="left">
+                    <h2>aside.left</h2>
+                    <p><pre>width: 200px;</pre></p>
+                </aside>
+                <aside class="right">
+                    <h2>aside.right</h2>
+                    <p><pre>width: 160px;</pre></p>
+                </aside>
+            </main>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <header>
+            <h2>布局列表</h2><a class="top" href="#">UP^</a>
+        </header>
+        <ul>
+            <li><a href="#1-流体布局">流体布局</a></li>
+            <li><a href="#2-三栏布局">BFC 布局</a></li>
+            <li><a href="#3-绝对定位布局">绝对定位布局</a></li>
+            <li><a href="#4-圣杯布局">圣杯布局</a></li>
+            <li><a href="#5-双飞翼布局">双飞翼布局</a></li>
+            <li><a href="#6-flex布局">Flex 布局</a></li>
+        </ul>
+    </aside>
+</body>
+
+</html>
