@@ -21,18 +21,19 @@
         resizeable: false,
         isFadeIn: false
     };
+    // , basedOnOriginal: false
 
     // 私有变量
-    var dataCol = 'data-waterfall-col';
-    var dataItem = 'data-waterfall-item';
-    var dataTarr = 'data-waterfall-tarr';
+    // var dataCol = 'data-waterfall-col';
+    // var dataItem = 'data-waterfall-item';
+    // var dataTarr = 'data-waterfall-tarr';
     var ii = 0; // item index
     var tArr = []; // top array
     var lArr = []; // left array
 
     $.fn.extend({
         "waterfall": function(options) {
-            //检测用户传进来的参数是否合法
+            // 检测用户传进来的参数是否合法
             if (!isValid(options))
                 return this;
 
@@ -58,27 +59,25 @@
 
             var containerWidth = iw * colNum + sw * (colNum + 1);
 
-            // 初始化各个私有参数
+            // 初始化各个私有参数：ii, tArr, lArr
 
             init(colNum, iw, sw, sh);
 
-            // 如果在某个元素上再次使用尽可能优化
-
-            if (parseInt($container.attr(dataCol)) === colNum) {
-                // 如果列数没变化，说明可以利用原有的基础
-                if (parseInt($container.attr(dataItem)) === itemLen) {
-                    // 如果列数和 item 数量均未变，视为没有任何变化
-                    return this;
-                } else if ($container.attr(dataTarr) && $container.attr(dataTarr).length) {
-                    // 当列数未变，item 数量增加且 dataTarr 的值存在的时候
-                    ii = parseInt($container.attr(dataItem));
-
-                    // console.log("uses the old data!..")
-                    tArr = $container.attr(dataTarr).split(',').map(function(elem) {
-                        return parseInt(elem);
-                    });
-                }
-            }
+            // // 如果设置了 basedOnOriginal ，那么在某个元素上再次使用时尽可能优化
+            // if (opts.basedOnOriginal && parseInt($container.attr(dataCol)) === colNum) {
+            //     // 如果列数没变化，说明可以利用原有的基础
+            //     if (parseInt($container.attr(dataItem)) === itemLen) {
+            //         // 如果列数和 item 数量均未变，视为没有任何变化
+            //         return this;
+            //     } else if ($container.attr(dataTarr) && $container.attr(dataTarr).length) {
+            //         // 当列数未变，item 数量增加且 dataTarr 的值存在的时候
+            //         ii = parseInt($container.attr(dataItem));
+            //         // console.log("uses the old data!..")
+            //         tArr = $container.attr(dataTarr).split(',').map(function(elem) {
+            //             return parseInt(elem);
+            //         });
+            //     }
+            // }
 
             // 绝对定位
             for (; ii < itemLen; ii++) {
@@ -92,17 +91,17 @@
                 tArr[min.index] = Math.ceil(min.val + $cur.outerHeight() + sh);
             }
 
-            // 设置 $container 元素的最小宽度和最小高度
+            // 设置 $container 元素的宽度和最小高度
             var max = getMaxObj(tArr);
             $container.css({
                 "width": containerWidth,
                 "min-height": max.val
             });
 
-            // 记录一些 data- 信息以重用和优化
-            $container.attr(dataCol, colNum);
-            $container.attr(dataItem, itemLen);
-            $container.attr(dataTarr, tArr);
+            // // 记录一些 data- 信息以重用和优化
+            // $container.attr(dataCol, colNum);
+            // $container.attr(dataItem, itemLen);
+            // $container.attr(dataTarr, tArr);
 
             // 返回本身，不破坏 jq 的链式写法
             return this;
@@ -142,7 +141,6 @@
 
     // // 私有方法 - 计算列数
     // function getColNum(){
-
     // }
 
     // 私有方法 - 检测参数是否合法

@@ -3,6 +3,11 @@ body {
     background-color: #ccc;
 }
 
+h1,
+p {
+    margin: 0;
+}
+
 #waterfall {
     /* 必要-1 */
     position: relative;

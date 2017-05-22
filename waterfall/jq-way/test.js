@@ -12,6 +12,7 @@
 
 $(function() {
     console.log("jq is ready~");
+    // 瀑布流插件的测试调用
     $("#testMulti").waterfall({
         itemClass: 'box',
         spacingWidth: 10,
