@@ -1,0 +1,93 @@
+<span>
+    <div>
+        <span 
+            *ngIf="status == 'update'"
+            (mouseup)="selectDone($event);"
+        >
+            <span 
+                class="sentence"
+                *ngFor="let pos_list in posListList; let posListIndex = index;" 
+            >
+                <!-- [dxy] unknown -->
+                <span 
+                    class="pos" 
+                    ng-class="{
+                        'updated':pos.updated,
+                        'org':pos['pos'] == 'ni',
+                        'location':pos['pos'] == 'ns',
+                    }"
+                    *ngFor="let pos in pos_list; let posIndex = index;" 
+                    [attr.data-pos-word-index]="posIndex"
+                    [attr.data-sentence-index]="posListIndex"
+                >
+                    <div class="word-content">
+                        <span 
+                            class="letter"
+                            *ngFor="let w in pos.word; let letterIndex = index;"
+                            [attr.data-letter-index]="letterIndex"
+                        >
+                            {{w}}
+                        </span>
+</div>
+<div class="pos-result">
+    {{pos['pos_display'] || pos['pos']}}
+</div>
+</span>
+<br>
+</span>
+</span>
+<span *ngIf="status == 'view'" (click)="updatePosWords('update')" style="cursor:pointer;">
+            <span 
+                class="sentence"
+                *ngFor="let pos_list in posListList;" 
+            >
+                <!-- [dxy] unknown -->
+                <span 
+                    class="pos" 
+                    ng-class="{
+                        'org':pos['pos'] == 'ni',
+                        'location':pos['pos'] == 'ns',
+                    }"
+                    *ngFor="let pos in pos_list;" 
+                    (click)="searchEntity(pos.pos,pos.word);$event.stopPropagation()"
+                >
+                    <div class="word-content">
+                        {{pos.word}}
+                    </div>
+                    <div 
+                        class="pos-result"
+                    >
+                        {{pos['pos_display'] || pos['pos']}}
+                    </div>
+                </span>
+<br>
+</span>
+</span>
+</div>
+<p style="padding-top:10px;">
+    <!-- [dxy] unknown -->
+    <button type="button" class="btn btn-xs btn-danger" ng-disabled="disableUpdate" (click)="updatePosWords('update')">
+        <span *ngIf="status == 'view'">
+                开始更新
+            </span>
+        <span *ngIf="status == 'update'">
+                更新({{updatePosList.length}})
+            </span>
+    </button>
+    <!-- [dxy] unknown -->
+    <button type="button" class="btn btn-xs btn-success" ng-disabled="disableUpdate || posConfirm == 'confirmed'" (click)="updatePosWords('confirm')">
+        <span *ngIf="posConfirm == 'confirmed'">
+                pos已确认
+            </span>
+        <span *ngIf="posConfirm == 'init'">
+                确认pos
+            </span>
+    </button>
+    <button type="button" class="btn btn-xs btn-warning" (click)="predictPosWords(message_id)">
+        预测pos
+    </button>
+    <button type="button" class="btn btn-xs btn-default" (click)="cancelUpdate()">
+        取消pos修改
+    </button>
+</p>
+</span>
