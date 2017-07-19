@@ -7,6 +7,7 @@ var handle = {};
 handle['/'] = requestHandlers.start;
 handle['/start'] = requestHandlers.start;
 handle['/upload'] = requestHandlers.upload;
+handle['/show'] = requestHandlers.show;
 
 // 依赖注入
 server.start(router.route, handle);
