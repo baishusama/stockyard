@@ -4,6 +4,9 @@ var querystring = require("querystring"),
     formidable = require("formidable"),
     util = require('util');
 
+// About formidable : https://www.npmjs.com/package/formidable
+// npm 4.2.0 & node 6.9.1 (node has to be downgraded)
+
 function start(response, request) {
     console.log("└ Request handler 'start' was called.");
 
