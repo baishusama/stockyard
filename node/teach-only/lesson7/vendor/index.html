@@ -24,7 +24,13 @@
 </script>
 <script src="tests.js"></script>
 <script>
-    mocha.run();
+    if(window.initMochaPhantomJS && window.location.search.indexOf('skip') === -1){
+        initMochaPhantomJS()
+    }
+    mocha.ui('bdd');
+    expect = chai.expect;
+
+    mocha.run(); // 兼容代码
 </script>
 </body>
 </html>
